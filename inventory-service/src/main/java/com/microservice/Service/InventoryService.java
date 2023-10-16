@@ -28,6 +28,14 @@ public class InventoryService {
 	@Transactional(readOnly = true)
 	public List<InventoryResponse> isInStock(List<String> skuCode) {
 		// TODO Auto-generated method stub
+		log.info("Wait start");
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		log.info("wait end");
 		System.out.print("Inventory database called....");
 		List<Inventory> response = repo.findBySkuCodeIn(skuCode);
 		List<InventoryResponse> inventoryResponseList = response.stream()
